@@ -5,6 +5,7 @@
 /* ── PARTÍCULAS ────────────────────────────── */
 (function spawnParticles() {
   const container = document.getElementById('particles');
+  if (!container) return;
   const colors = ['#c084fc', '#e879a0', '#a855f7', '#f9a8d4', '#d8b4fe'];
   for (let i = 0; i < 24; i++) {
     const p = document.createElement('div');
