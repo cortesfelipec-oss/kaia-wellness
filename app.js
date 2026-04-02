@@ -351,3 +351,79 @@ const activeObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => activeObserver.observe(s));
+
+/* ── LANGUAGE SWITCHER ──────────────────────── */
+const translations = {
+  es: {
+    nav_about: '¿Qué es?', nav_sessions: 'Sesiones', nav_benefits: 'Beneficios',
+    nav_team: 'Facilitadoras', nav_book: 'Agendar', nav_cta: 'Empezar ahora',
+    hero_eyebrow: '¿Qué experiencia estás buscando?',
+    hero_h1a: 'Una mejor manera', hero_h1b: 'sanar',
+    hero_sub: 'Sumérgete en un viaje de vibraciones curativas. Sesiones de sound bath diseñadas para restaurar tu mente, cuerpo y espíritu.',
+    hero_cta1: 'Agenda tu sesión ', hero_cta2: 'Conoce más',
+  },
+  en: {
+    nav_about: 'What is it?', nav_sessions: 'Sessions', nav_benefits: 'Benefits',
+    nav_team: 'Facilitators', nav_book: 'Book', nav_cta: 'Start now',
+    hero_eyebrow: 'What experience are you looking for?',
+    hero_h1a: 'A better way', hero_h1b: 'to heal',
+    hero_sub: 'Immerse yourself in a journey of healing vibrations. Sound bath sessions designed to restore your mind, body and spirit.',
+    hero_cta1: 'Book your session ', hero_cta2: 'Learn more',
+  },
+  pt: {
+    nav_about: 'O que é?', nav_sessions: 'Sessões', nav_benefits: 'Benefícios',
+    nav_team: 'Facilitadoras', nav_book: 'Agendar', nav_cta: 'Começar agora',
+    hero_eyebrow: 'Que experiência você está buscando?',
+    hero_h1a: 'Uma maneira melhor', hero_h1b: 'de curar',
+    hero_sub: 'Mergulhe em uma jornada de vibrações curativas. Sessões de sound bath para restaurar sua mente, corpo e espírito.',
+    hero_cta1: 'Agende sua sessão ', hero_cta2: 'Saiba mais',
+  },
+  fr: {
+    nav_about: 'Qu\'est-ce?', nav_sessions: 'Séances', nav_benefits: 'Bienfaits',
+    nav_team: 'Facilitatrices', nav_book: 'Réserver', nav_cta: 'Commencer',
+    hero_eyebrow: 'Quelle expérience cherchez-vous?',
+    hero_h1a: 'Une meilleure façon', hero_h1b: 'de guérir',
+    hero_sub: 'Plongez dans un voyage de vibrations curatives. Des séances de sound bath pour restaurer votre esprit, corps et âme.',
+    hero_cta1: 'Réserver une séance ', hero_cta2: 'En savoir plus',
+  },
+};
+
+const langBtn      = document.getElementById('langBtn');
+const langSwitcher = document.getElementById('langSwitcher');
+const langDropdown = document.getElementById('langDropdown');
+const langCurrent  = document.getElementById('langCurrent');
+
+if (langBtn) {
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langSwitcher.classList.toggle('open');
+  });
+
+  document.addEventListener('click', () => langSwitcher.classList.remove('open'));
+
+  langDropdown.querySelectorAll('.lang-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      langDropdown.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      langCurrent.textContent = lang.toUpperCase();
+      langSwitcher.classList.remove('open');
+      applyTranslations(lang);
+    });
+  });
+}
+
+function applyTranslations(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) {
+      if (el.tagName === 'A' && el.querySelector('i')) {
+        el.innerHTML = t[key] + '<i class="fas fa-arrow-right"></i>';
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+}

@@ -23,13 +23,26 @@
   </div>
   <div class="nav-bottom">
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">¿Qué es?</a></li>
-      <li><a href="#sessions">Sesiones</a></li>
-      <li><a href="#benefits">Beneficios</a></li>
-      <li><a href="#team">Facilitadoras</a></li>
-      <li><a href="#booking">Agendar</a></li>
+      <li><a href="#about" data-i18n="nav_about">¿Qué es?</a></li>
+      <li><a href="#sessions" data-i18n="nav_sessions">Sesiones</a></li>
+      <li><a href="#benefits" data-i18n="nav_benefits">Beneficios</a></li>
+      <li><a href="#team" data-i18n="nav_team">Facilitadoras</a></li>
+      <li><a href="#booking" data-i18n="nav_book">Agendar</a></li>
     </ul>
-    <a href="#booking" class="btn btn-nav">Empezar ahora</a>
+    <a href="#booking" class="btn btn-nav" data-i18n="nav_cta">Empezar ahora</a>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma">
+        <i class="fas fa-globe"></i>
+        <span id="langCurrent">ES</span>
+        <i class="fas fa-chevron-down lang-arrow"></i>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" data-lang="es">🇨🇴 Español</button>
+        <button class="lang-option" data-lang="en">🇺🇸 English</button>
+        <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+      </div>
+    </div>
     <button class="hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -41,17 +54,17 @@
 ═══════════════════════════════════════ -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">¿Qué experiencia estás buscando?</p>
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">¿Qué experiencia estás buscando?</p>
     <h1 class="hero-heading">
-      Una mejor manera<br>de <em>sanar</em>
+      <span data-i18n="hero_h1a">Una mejor manera</span><br>de <em data-i18n="hero_h1b">sanar</em>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n="hero_sub">
       Sumérgete en un viaje de vibraciones curativas. Sesiones de sound bath
       diseñadas para restaurar tu mente, cuerpo y espíritu.
     </p>
     <div class="hero-actions">
-      <a href="#booking" class="btn btn-primary">Agenda tu sesión <i class="fas fa-arrow-right"></i></a>
-      <a href="#about" class="btn btn-ghost">Conoce más</a>
+      <a href="#booking" class="btn btn-primary" data-i18n="hero_cta1">Agenda tu sesión <i class="fas fa-arrow-right"></i></a>
+      <a href="#about" class="btn btn-ghost" data-i18n="hero_cta2">Conoce más</a>
     </div>
 
     <div class="hero-services">

@@ -150,6 +150,41 @@ ul { list-style: none; }
   transition: var(--t);
 }
 .nav-links a:hover::after { width: 100%; }
+/* ── LANGUAGE SWITCHER ──────────────────── */
+.lang-switcher {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+.lang-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: 1.5px solid var(--border);
+  border-radius: 50px; padding: 6px 12px;
+  font-size: .8rem; font-weight: 600; color: var(--text-muted);
+  cursor: pointer; transition: var(--t);
+  font-family: 'Inter', sans-serif;
+}
+.lang-btn:hover { border-color: var(--lila); color: var(--text); }
+.lang-arrow { font-size: .6rem; transition: var(--t); }
+.lang-switcher.open .lang-arrow { transform: rotate(180deg); }
+.lang-dropdown {
+  display: none;
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-md);
+  min-width: 150px; z-index: 900; overflow: hidden;
+}
+.lang-switcher.open .lang-dropdown { display: block; }
+.lang-option {
+  display: block; width: 100%;
+  padding: 10px 16px; text-align: left;
+  background: none; border: none; cursor: pointer;
+  font-size: .85rem; font-family: 'Inter', sans-serif;
+  color: var(--text-muted); transition: var(--t);
+}
+.lang-option:hover { background: var(--lila-pale); color: var(--text); }
+.lang-option.active { color: var(--lila); font-weight: 600; background: var(--lila-pale); }
+
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
