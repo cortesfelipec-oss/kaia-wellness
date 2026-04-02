@@ -157,10 +157,11 @@ const testimonialCards = document.querySelectorAll('.testimonial-card');
 const dots             = document.querySelectorAll('.dot');
 
 function showTestimonial(idx) {
+  if (!testimonialCards.length) return;
   testimonialCards.forEach(c => c.classList.remove('active'));
   dots.forEach(d => d.classList.remove('active'));
-  testimonialCards[idx].classList.add('active');
-  dots[idx].classList.add('active');
+  if (testimonialCards[idx]) testimonialCards[idx].classList.add('active');
+  if (dots[idx]) dots[idx].classList.add('active');
   currentTestimonial = idx;
 }
 
@@ -169,9 +170,11 @@ dots.forEach(dot => {
 });
 
 // Auto-rotate cada 5 s
-setInterval(() => {
-  showTestimonial((currentTestimonial + 1) % testimonialCards.length);
-}, 5000);
+if (testimonialCards.length) {
+  setInterval(() => {
+    showTestimonial((currentTestimonial + 1) % testimonialCards.length);
+  }, 5000);
+}
 
 /* ── SOUND WAVE BAR ─────────────────────────── */
 const soundWaveBar = document.getElementById('soundWaveBar');
