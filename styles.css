@@ -643,6 +643,11 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 }
 
 @media (max-width: 768px) {
+  .logo-kaia { font-size: 4.5rem; }
+  .logo-divider { height: 36px; }
+  .logo-wellness { font-size: 0.7rem; letter-spacing: 0.3em; }
+  .nav-top { padding: 12px 16px 8px; }
+  .nav-bottom { padding: 8px 16px; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column;
@@ -652,7 +657,7 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
   }
   .hamburger { display: flex; }
   .btn-nav { display: none; }
-  .hero { min-height: auto; padding: 110px 24px 60px; }
+  .hero { min-height: auto; padding: 40px 24px 60px; }
   .hero-services { flex-wrap: wrap; border-radius: var(--radius); }
   .hero-svc { min-width: 30%; }
   .services-grid { grid-template-columns: 1fr; }
@@ -667,6 +672,7 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 }
 
 @media (max-width: 480px) {
+  .logo-kaia { font-size: 3.5rem; }
   .footer-inner { grid-template-columns: 1fr; }
   .hero-services { flex-direction: column; }
   .hero-svc { flex-direction: row; justify-content: flex-start; }
