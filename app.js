@@ -125,27 +125,30 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+const lightboxCloseBtn = document.getElementById('lightboxClose');
+if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
 
-document.getElementById('lightboxPrev').addEventListener('click', () => {
+const lightboxPrevBtn = document.getElementById('lightboxPrev');
+if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', () => {
   currentLightboxIndex = (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
   lightboxImg.src = galleryImages[currentLightboxIndex];
 });
 
-document.getElementById('lightboxNext').addEventListener('click', () => {
+const lightboxNextBtn = document.getElementById('lightboxNext');
+if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', () => {
   currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
   lightboxImg.src = galleryImages[currentLightboxIndex];
 });
 
-lightbox.addEventListener('click', e => {
+if (lightbox) lightbox.addEventListener('click', e => {
   if (e.target === lightbox) closeLightbox();
 });
 
 document.addEventListener('keydown', e => {
-  if (!lightbox.classList.contains('active')) return;
+  if (!lightbox || !lightbox.classList.contains('active')) return;
   if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
-  if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+  if (e.key === 'ArrowLeft' && lightboxPrevBtn) lightboxPrevBtn.click();
+  if (e.key === 'ArrowRight' && lightboxNextBtn) lightboxNextBtn.click();
 });
 
 /* ── TESTIMONIOS SLIDER ─────────────────────── */
