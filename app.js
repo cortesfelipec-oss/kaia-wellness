@@ -24,8 +24,12 @@
 
 /* ── NAVBAR SCROLL ─────────────────────────── */
 const navbar = document.getElementById('navbar');
+let lastScrollY = 0;
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  const currentY = window.scrollY;
+  navbar.classList.toggle('scrolled', currentY > 50);
+  navbar.classList.toggle('navbar-hidden', currentY > lastScrollY && currentY > 100);
+  lastScrollY = currentY;
 });
 
 /* ── HAMBURGER ─────────────────────────────── */
@@ -636,6 +640,49 @@ if (langBtn) {
     });
   });
 }
+
+/* ── MODALES ─────────────────────────────────────────────── */
+const modalOverlay = document.getElementById('modalOverlay');
+const modalBody    = document.getElementById('modalBody');
+const modalClose   = document.getElementById('modalClose');
+
+function openModal(key) {
+  const source = document.getElementById('modal-' + key);
+  if (!source) return;
+  modalBody.innerHTML = source.innerHTML;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { modalBody.innerHTML = ''; }, 300);
+}
+
+document.querySelectorAll('[data-modal]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    openModal(link.dataset.modal);
+  });
+});
+
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => {
+  if (e.target === modalOverlay) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+/* ── HERO SERVICE BUTTONS → BOOKING ─────────────────────── */
+document.querySelectorAll('.hero-svc[data-session]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sessionType = document.getElementById('sessionType');
+    if (sessionType) sessionType.value = btn.dataset.session;
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
 function applyTranslations(lang) {
   const t = translations[lang];
