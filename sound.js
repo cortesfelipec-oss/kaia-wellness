@@ -208,226 +208,57 @@ const SoundEngine = (() => {
 })();
 
 /* ════════════════════════════════════════════
-   UI DEL REPRODUCTOR FLOTANTE
+   UI DEL REPRODUCTOR FLOTANTE — botón circular
    ════════════════════════════════════════════ */
 (function buildPlayer() {
-  // Estilos del player
   const style = document.createElement('style');
   style.textContent = `
-    #soundPlayer {
+    #soundBtn {
       position: fixed;
-      bottom: 88px;
-      left: 24px;
+      bottom: 28px;
+      right: 28px;
       z-index: 600;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    #soundToggle {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: white;
-      border: none;
-      border-radius: 50px;
-      padding: 12px 20px;
-      cursor: pointer;
-      box-shadow: 0 8px 32px rgba(124,58,237,0.2);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #7c3aed;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    #soundToggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(124,58,237,0.3);
-    }
-
-    #soundToggle.playing {
-      background: linear-gradient(135deg, #7c3aed, #a855f7, #e879a0);
-      color: white;
-    }
-
-    .sound-icon-wrap {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      height: 18px;
-    }
-
-    .sound-bar {
-      width: 3px;
-      border-radius: 3px;
-      background: currentColor;
-      transition: height 0.2s ease;
-    }
-
-    .sound-bar:nth-child(1) { height: 6px; }
-    .sound-bar:nth-child(2) { height: 14px; }
-    .sound-bar:nth-child(3) { height: 10px; }
-    .sound-bar:nth-child(4) { height: 18px; }
-    .sound-bar:nth-child(5) { height: 8px; }
-
-    #soundToggle.playing .sound-bar:nth-child(1) { animation: sb 0.8s 0.0s ease-in-out infinite alternate; }
-    #soundToggle.playing .sound-bar:nth-child(2) { animation: sb 0.8s 0.1s ease-in-out infinite alternate; }
-    #soundToggle.playing .sound-bar:nth-child(3) { animation: sb 0.8s 0.2s ease-in-out infinite alternate; }
-    #soundToggle.playing .sound-bar:nth-child(4) { animation: sb 0.8s 0.3s ease-in-out infinite alternate; }
-    #soundToggle.playing .sound-bar:nth-child(5) { animation: sb 0.8s 0.4s ease-in-out infinite alternate; }
-
-    @keyframes sb {
-      from { height: 4px; }
-      to   { height: 18px; }
-    }
-
-    #volumeWrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: white;
-      border-radius: 50px;
-      padding: 10px 18px;
-      box-shadow: 0 4px 20px rgba(124,58,237,0.15);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: all 0.3s ease;
-      pointer-events: none;
-    }
-
-    #volumeWrap.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-
-    #volumeWrap i {
-      color: #a855f7;
-      font-size: 0.85rem;
-      width: 14px;
-    }
-
-    #volumeSlider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100px;
-      height: 4px;
-      border-radius: 4px;
-      background: linear-gradient(to right, #a855f7 var(--val, 70%), #e9d5ff var(--val, 70%));
-      outline: none;
-      cursor: pointer;
-    }
-
-    #volumeSlider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 14px;
-      height: 14px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #7c3aed, #e879a0);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-top: 1px solid rgba(255,255,255,0.85);
+      background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(168,85,247,0.18) 100%);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      box-shadow: 0 8px 24px rgba(109,40,217,0.14), inset 0 1px 0 rgba(255,255,255,0.7);
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(124,58,237,0.4);
+      color: #7C3AED;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
     }
-
-    #soundHint {
-      position: fixed;
-      bottom: 148px;
-      left: 24px;
+    #soundBtn:hover { transform: scale(1.1); }
+    #soundBtn.playing {
       background: linear-gradient(135deg, #7c3aed, #e879a0);
       color: white;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 50px;
-      box-shadow: 0 4px 20px rgba(124,58,237,0.3);
-      animation: hint-bounce 2s ease-in-out infinite;
-      z-index: 600;
-      white-space: nowrap;
-    }
-
-    #soundHint::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 20px;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid #e879a0;
-    }
-
-    @keyframes hint-bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-4px); }
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: 0 8px 28px rgba(124,58,237,0.4), inset 0 1px 0 rgba(255,255,255,0.5);
     }
   `;
   document.head.appendChild(style);
 
-  // Hint
-  const hint = document.createElement('div');
-  hint.id = 'soundHint';
-  hint.textContent = '🎵 Activa el sonido';
-  document.body.appendChild(hint);
-
-  // Ocultar hint al hacer scroll
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) hint.style.display = 'none';
-  }, { once: true });
-
-  // Contenedor
-  const player = document.createElement('div');
-  player.id = 'soundPlayer';
-
-  // Control de volumen
-  const volWrap = document.createElement('div');
-  volWrap.id = 'volumeWrap';
-  volWrap.innerHTML = `
-    <i class="fas fa-volume-down"></i>
-    <input type="range" id="volumeSlider" min="0" max="100" value="70" />
-    <i class="fas fa-volume-up"></i>
-  `;
-
-  // Botón principal
   const btn = document.createElement('button');
-  btn.id = 'soundToggle';
-  btn.innerHTML = `
-    <div class="sound-icon-wrap">
-      <div class="sound-bar"></div>
-      <div class="sound-bar"></div>
-      <div class="sound-bar"></div>
-      <div class="sound-bar"></div>
-      <div class="sound-bar"></div>
-    </div>
-    <span id="soundLabel">Activar sonido</span>
-  `;
+  btn.id = 'soundBtn';
+  btn.setAttribute('aria-label', 'Activar sonido');
+  btn.innerHTML = '<i class="fas fa-music"></i>';
+  document.body.appendChild(btn);
 
-  player.appendChild(volWrap);
-  player.appendChild(btn);
-  document.body.appendChild(player);
-
-  // Eventos botón
   btn.addEventListener('click', () => {
-    hint.style.display = 'none';
     if (SoundEngine.playing) {
       SoundEngine.stop();
       btn.classList.remove('playing');
-      document.getElementById('soundLabel').textContent = 'Activar sonido';
-      volWrap.classList.remove('show');
     } else {
       SoundEngine.start();
       btn.classList.add('playing');
-      document.getElementById('soundLabel').textContent = 'Sonando…';
-      volWrap.classList.add('show');
     }
-  });
-
-  // Volumen
-  const slider = document.getElementById('volumeSlider');
-  slider.addEventListener('input', () => {
-    const v = slider.value / 100;
-    slider.style.setProperty('--val', slider.value + '%');
-    SoundEngine.setVolume(v);
   });
 
   // Ping en botones CTA
