@@ -35,6 +35,12 @@ const navLinks  = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
   hamburger.classList.toggle('active');
+  if (navLinks.classList.contains('open')) {
+    const navBottom = document.querySelector('.navbar').getBoundingClientRect().bottom;
+    navLinks.style.top = navBottom + 'px';
+  } else {
+    navLinks.style.top = '';
+  }
 });
 
 navLinks.querySelectorAll('a').forEach(link => {

@@ -1277,8 +1277,11 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column;
-    position: fixed; inset: 0; top: 64px;
-    background: var(--bg); padding: 40px 24px;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    background: rgba(253, 251, 255, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 40px 24px;
     gap: 24px; z-index: 800;
   }
   .hamburger { display: flex; }
