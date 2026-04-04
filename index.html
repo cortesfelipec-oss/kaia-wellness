@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>kaia WELLNESS · Sound Healing</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -13,6 +13,7 @@
 <!-- ═══════════════════════════════════════
      NAVBAR
 ═══════════════════════════════════════ -->
+<div class="page-top">
 <nav class="navbar" id="navbar">
   <div class="nav-top">
     <a href="#hero" class="nav-logo">
@@ -36,11 +37,10 @@
   </div>
   <div class="nav-bottom">
     <ul class="nav-links" id="navLinks">
-      <li><a href="#" data-modal="about" data-i18n="nav_about">¿Qué es?</a></li>
-      <li><a href="#" data-modal="sessions" data-i18n="nav_sessions">Sesiones</a></li>
-      <li><a href="#" data-modal="benefits" data-i18n="nav_benefits">Beneficios</a></li>
-      <li><a href="#" data-modal="team" data-i18n="nav_team">Facilitadoras</a></li>
-      <li><a href="#booking" data-i18n="nav_book">Agendar</a></li>
+      <li><a href="#" data-modal="about">Quiénes somos</a></li>
+      <li><a href="#" data-modal="team">Founder</a></li>
+      <li><a href="#" data-modal="sessions">Experiencias</a></li>
+      <li><a href="#" data-modal="benefits">Reviews</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
@@ -53,43 +53,38 @@
 ═══════════════════════════════════════ -->
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow" data-i18n="hero_eyebrow">¿Qué experiencia estás buscando?</p>
+    <p class="hero-eyebrow">¿Estás buscando una <em style="font-style:italic;">PAUSA</em> en tu rutina?</p>
     <h1 class="hero-heading">
-      <span data-i18n="hero_h1a">Una mejor manera</span><br>de <em data-i18n="hero_h1b">sanar</em>
+      not your average<br>
+      <em>wellness</em> platform
     </h1>
-    <p class="hero-sub" data-i18n="hero_sub">
-      Sumérgete en un viaje de vibraciones curativas. Sesiones de sound bath
-      diseñadas para restaurar tu mente, cuerpo y espíritu.
-    </p>
-    <div class="hero-actions">
-      <a href="#booking" class="btn btn-primary"><span data-i18n="hero_cta1">Agenda tu sesión</span> <i class="fas fa-arrow-right"></i></a>
-      <a href="#about" class="btn btn-ghost" data-i18n="hero_cta2">Conoce más</a>
-    </div>
 
-    <div class="hero-services">
-      <div class="hero-svc" data-session="individual">
-        <div class="hero-svc-icon"><i class="fas fa-user"></i></div>
-        <span data-i18n="svc_individual">Individual</span>
+<p class="hero-ecosystem-label"><span class="eco-words"><em>kaia</em> <span class="eco-name">ecosystem</span></span></p>
+<div class="hero-services">
+      <div class="hero-svc" data-modal="kaia-social">
+        <div class="hero-svc-icon"><i class="fas fa-heart"></i></div>
+        <span>Kaia Social</span>
       </div>
-      <div class="hero-svc" data-session="grupal">
-        <div class="hero-svc-icon"><i class="fas fa-users"></i></div>
-        <span data-i18n="svc_grupal">Grupal</span>
-      </div>
-      <div class="hero-svc" data-session="retiro">
-        <div class="hero-svc-icon"><i class="fas fa-spa"></i></div>
-        <span data-i18n="svc_retiro">Retiro</span>
-      </div>
-      <div class="hero-svc" data-session="empresarial">
+      <div class="hero-svc" data-modal="kaia-teams">
         <div class="hero-svc-icon"><i class="fas fa-building"></i></div>
-        <span data-i18n="svc_empresarial">Empresarial</span>
+        <span>Kaia for Teams</span>
       </div>
-      <div class="hero-svc" data-session="virtual">
-        <div class="hero-svc-icon"><i class="fas fa-laptop"></i></div>
-        <span data-i18n="svc_virtual">Virtual</span>
+      <div class="hero-svc" data-modal="brand-collab">
+        <div class="hero-svc-icon"><i class="fas fa-handshake"></i></div>
+        <span>Brand<br>Collab</span>
+      </div>
+      <div class="hero-svc" data-modal="community">
+        <div class="hero-svc-icon"><i class="fas fa-seedling"></i></div>
+        <span>Community</span>
+      </div>
+      <div class="hero-svc" data-modal="kaia-tech-lab">
+        <div class="hero-svc-icon"><i class="fas fa-microchip"></i></div>
+        <span>Kaia<br>Tech Lab</span>
       </div>
     </div>
   </div>
 </section>
+</div><!-- /page-top -->
 
 <!-- ═══════════════════════════════════════
      MODAL OVERLAY
@@ -108,69 +103,29 @@
 
 <!-- ── MODAL: ¿QUÉ ES? ── -->
 <div id="modal-about">
-<div class="trust-strip">
-  <p class="trust-label" data-i18n="trust_label">Avalado por profesionales de la salud integrativa</p>
-  <div class="trust-logos">
-    <span><i class="fas fa-award"></i> <span data-i18n="trust_cert">Certificación IAST</span></span>
-    <span><i class="fas fa-heart"></i> <span data-i18n="trust_med">Medicina Integrativa</span></span>
-    <span><i class="fas fa-leaf"></i> <span data-i18n="trust_hol">Bienestar Holístico</span></span>
-    <span><i class="fas fa-brain"></i> <span data-i18n="trust_neuro">Neurociencia del Sonido</span></span>
-    <span><i class="fas fa-star"></i> <span data-i18n="trust_sessions">500+ Sesiones</span></span>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     FEATURE / ABOUT
-═══════════════════════════════════════ -->
-<section class="feature" id="about">
-  <div class="feature-inner">
-    <div class="feature-img-wrap">
-      <img
-        src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=700&q=80"
-        alt="Sound Bath session"
-        class="feature-img"
-        onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80'"
-      />
-      <div class="feature-stat">
-        <strong>98%</strong>
-        <span data-i18n="about_stat">de satisfacción</span>
-      </div>
+<section class="about-modal-section">
+  <div class="about-modal-inner">
+    <p class="eyebrow">Quiénes somos</p>
+    <h2 class="about-modal-title">
+      Kaia is a bilingual wellness platform<br>
+      on a mission to reimagine the way<br>
+      we <em>pause</em>, feel, and connect.
+    </h2>
+    <p class="about-modal-body">
+      We design elevated, immersive experiences — curated events, corporate retreats,
+      and sensory pop-ups across California and beyond 🌎 — blending intention,
+      aesthetics, and transformation.
+    </p>
+    <div class="about-modal-manifesto">
+      <p>Think <em>presence</em>, <strong>but make it magnetic.</strong></p>
+      <p>Think <em>wellness</em>, <strong>but make it modern.</strong></p>
     </div>
-    <div class="feature-content">
-      <p class="eyebrow" data-i18n="about_eyebrow">¿Qué es Sound Healing?</p>
-      <h2><span data-i18n="about_h2a">Finalmente—una experiencia</span><br><em data-i18n="about_h2b">para tu alma</em></h2>
-      <p class="feature-body" data-i18n="about_body">
-        Estamos aquí para acompañarte a liberar el estrés, recuperar tu equilibrio
-        y sanar desde adentro. A través del sonido, tu sistema nervioso encuentra
-        el descanso profundo que merece.
-      </p>
-      <ul class="feature-list">
-        <li>
-          <i class="fas fa-check"></i>
-          <div>
-            <strong data-i18n="about_li1_title">Ondas cerebrales theta</strong>
-            <p data-i18n="about_li1_p">Estado meditativo profundo sin esfuerzo consciente</p>
-          </div>
-        </li>
-        <li>
-          <i class="fas fa-check"></i>
-          <div>
-            <strong data-i18n="about_li2_title">Regulación del sistema nervioso</strong>
-            <p data-i18n="about_li2_p">Activa tu modo natural de descanso y recuperación</p>
-          </div>
-        </li>
-        <li>
-          <i class="fas fa-check"></i>
-          <div>
-            <strong data-i18n="about_li3_title">Reducción de cortisol comprobada</strong>
-            <p data-i18n="about_li3_p">Vibraciones que disminuyen la hormona del estrés</p>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <p class="about-modal-body">
+      A space for <strong>la comunidad</strong>, expansion, and real connection.<br>
+      To live fully, <em>aquí y ahora</em> <span class="sparkle">✨</span>
+    </p>
   </div>
 </section>
-
 </div><!-- /modal-about -->
 
 <!-- ── MODAL: SESIONES ── -->
@@ -256,127 +211,212 @@
 
 </div><!-- /modal-benefits -->
 
-<!-- ── MODAL: FACILITADORAS ── -->
+<!-- ── MODAL: KAIA FOR TEAMS ── -->
+<div id="modal-kaia-teams">
+<section class="about-modal-section">
+  <div class="about-modal-inner ks-inner">
+    <p class="eyebrow">Kaia for Teams</p>
+    <h2 class="about-modal-title">
+      For modern teams who want<br><em>more than the usual.</em>
+    </h2>
+    <p class="about-modal-body">
+      We bring wellness into the workplace through <strong>immersive experiences</strong>,
+      offsites, and sensory activations designed to <em>reset</em>, <em>recharge</em>
+      and <em>reconnect</em>.
+    </p>
+    <p class="about-modal-body">
+      We don't do traditional wellness. We design <em>science-backed</em>, sensory-driven experiences
+      that help teams <em>regulate</em>, <em>recover</em>, and perform at their highest level.
+    </p>
+    <div class="about-modal-manifesto manifesto-image-bg">
+      <p><strong>Because better humans build better companies.</strong> <span class="sparkle">✨</span></p>
+    </div>
+    <div class="ks-upgrades kt-experiences-wrap">
+      <p class="ks-upgrades-label">Our Experiences</p>
+      <div class="kt-experiences">
+        <div class="ks-exp-item"><i class="fas fa-brain"></i><span>Nervous System Reset Lab</span></div>
+        <div class="ks-exp-item"><i class="fas fa-couch"></i><span>Recovery Lounge</span></div>
+        <div class="ks-exp-item"><i class="fas fa-sun"></i><span>Red Light Therapy</span></div>
+        <div class="ks-exp-item"><i class="fas fa-utensils"></i><span>Functional Cooking</span></div>
+        <div class="ks-exp-item"><i class="fas fa-wind"></i><span>Mindful Movement</span></div>
+        <div class="ks-exp-item"><i class="fas fa-spa"></i><span>Yoga</span></div>
+        <div class="ks-exp-item"><i class="fas fa-dumbbell"></i><span>Pilates</span></div>
+        <div class="ks-exp-item"><i class="fas fa-child"></i><span>Posture & Mobility Reset</span></div>
+        <div class="ks-exp-item"><i class="fas fa-music"></i><span>Immersive Sound Journey</span></div>
+      </div>
+    </div>
+    <a href="#booking" class="btn-lets-talk" onclick="document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow='';">
+      <span>Let's Talk</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+</div><!-- /modal-kaia-teams -->
+
+<!-- ── MODAL: BRAND COLLAB ── -->
+<div id="modal-brand-collab">
+<section class="about-modal-section">
+  <div class="about-modal-inner ks-inner">
+    <p class="eyebrow">Brand Collaborations</p>
+    <h2 class="about-modal-title">
+      Where <em>brand</em> meets experience —<br>and experience becomes memorable.
+    </h2>
+    <p class="about-modal-body">
+      We partner with forward-thinking brands to co-create <strong>elevated wellness experiences</strong>.
+      From immersive pop-ups to curated events and sensory activations, each collaboration is designed
+      to tell a story, expand awareness, and create <em>meaningful connection</em> with your audience.
+    </p>
+    <a href="#booking" class="btn-lets-talk" onclick="document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow='';">
+      <span>Let's Connect</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+</div><!-- /modal-brand-collab -->
+
+<!-- ── MODAL: KAIA SOCIAL ── -->
+<div id="modal-kaia-social">
+<section class="about-modal-section">
+  <div class="about-modal-inner ks-inner">
+    <p class="eyebrow">Kaia Social</p>
+    <h2 class="about-modal-title">
+      Where wellness becomes<br>a <em>shared experience.</em>
+    </h2>
+    <p class="about-modal-body">
+      We design elevated gatherings for life's special moments — from intimate celebrations
+      to immersive group experiences that invite <em>presence</em>, connection y <em>expansión</em>.
+    </p>
+    <p class="about-modal-body">
+      Each experience is thoughtfully curated to feel <strong>intentional</strong>,
+      <strong>sensorial</strong>, and unforgettable.
+    </p>
+
+    <div class="ks-experiences">
+      <div class="ks-exp-item">
+        <i class="fas fa-birthday-cake"></i>
+        <span>Birthday Session</span>
+      </div>
+      <div class="ks-exp-item">
+        <i class="fas fa-glass-cheers"></i>
+        <span>Bridal Session</span>
+      </div>
+      <div class="ks-exp-item">
+        <i class="fas fa-heart"></i>
+        <span>Mom to Be Session</span>
+      </div>
+      <div class="ks-exp-item">
+        <i class="fas fa-water"></i>
+        <span>Floating Soundbath</span>
+      </div>
+    </div>
+
+    <div class="ks-upgrades">
+      <p class="ks-upgrades-label">Upgrade your experience</p>
+      <div class="ks-upgrades-tags">
+        <span>Puppie Yoga</span>
+        <span>Pilates</span>
+        <span>Barre</span>
+        <span>Ceramic</span>
+        <span>Functional Cooking</span>
+        <span>Cacao Ceremony</span>
+        <span>Lei Workshop</span>
+        <span>Matcha Ceremony</span>
+        <span>Matcha Bar</span>
+        <span>Sensorial Tastings</span>
+        <span>Mocktail Bar</span>
+        <span>Personalized Goodie Bags</span>
+        <span>Private Chef</span>
+      </div>
+    </div>
+
+    <div class="about-modal-manifesto manifesto-image-bg" style="text-align:center;">
+      <p>Designed for those who want to <em>celebrate differently</em> —</p>
+      <p><strong>more presence, more intention, more magic.</strong> <span class="sparkle">✨</span></p>
+    </div>
+    <a href="#booking" class="btn-lets-talk" onclick="document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow='';">
+      <span>Let's Talk</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+</div><!-- /modal-kaia-social -->
+
+<!-- ── MODAL: COMMUNITY ── -->
+<div id="modal-community">
+<section class="about-modal-section">
+  <div class="about-modal-inner ks-inner">
+    <p class="eyebrow">Community</p>
+    <h2 class="about-modal-title">
+      This is <em>our people.</em>
+    </h2>
+    <p class="about-modal-body">
+      A space for <strong>la comunidad</strong> — for those who crave <em>depth</em>,
+      connection, and real moments in a fast world.
+    </p>
+    <p class="about-modal-body">
+      From intimate gatherings to shared rituals, Kaia is where we come back
+      to ourselves… <em>together.</em>
+    </p>
+    <p class="about-modal-body" style="text-align:center; margin-bottom:28px;">
+      <em>We come back to ourselves… juntos.</em> <span class="sparkle">✨</span>
+    </p>
+    <a href="#booking" class="btn-lets-talk" onclick="document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow='';">
+      <span>Let's Talk</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+</div><!-- /modal-community -->
+
+<!-- ── MODAL: KAIA TECH LAB ── -->
+<div id="modal-kaia-tech-lab">
+<section class="about-modal-section">
+  <div class="about-modal-inner ks-inner">
+    <p class="eyebrow">Kaia Tech Lab</p>
+    <h2 class="about-modal-title">
+      Where wellness meets <em>technology.</em>
+    </h2>
+    <p class="about-modal-body">
+      We design and integrate digital solutions and AI-powered tools for modern entrepreneurs
+      building brands with purpose.
+    </p>
+    <p class="about-modal-body">
+      From community-driven platforms to intelligent systems that optimize growth, engagement,
+      and impact — we help you scale <em>consciously</em>, without losing the human touch.
+    </p>
+    <a href="#booking" class="btn-lets-talk" onclick="document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow='';">
+      <span>Let's Talk</span>
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</section>
+</div><!-- /modal-kaia-tech-lab -->
+
+<!-- ── MODAL: FOUNDER ── -->
 <div id="modal-team">
-<section class="team-section" id="team">
-  <div class="team-inner">
-    <div class="team-avatars">
-      <img src="https://i.pravatar.cc/120?img=1" alt="Facilitadora" class="av av1" />
-      <img src="https://i.pravatar.cc/120?img=2" alt="Facilitadora" class="av av2" />
-      <img src="https://i.pravatar.cc/120?img=3" alt="Facilitadora" class="av av3" />
-      <img src="https://i.pravatar.cc/120?img=9" alt="Facilitadora" class="av av4" />
-      <img src="https://i.pravatar.cc/120?img=10" alt="Facilitadora" class="av av5" />
-      <img src="https://i.pravatar.cc/120?img=11" alt="Facilitadora" class="av av6" />
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-img-wrap">
+      <img src="founder.png" alt="Cinthya Garcia" class="founder-img" />
     </div>
-    <div class="team-content">
-      <h2><span data-i18n="team_h2a">Un mundo más amplio</span><br>de <em data-i18n="team_h2b">sanación</em></h2>
-      <p data-i18n="team_p">
-        ¿Cuáles son las probabilidades de que el talento que necesitas viva en tu ciudad?
-        Nuestro equipo de facilitadoras certificadas trabaja en múltiples idiomas,
-        husos horarios y modalidades, lo que significa mayor alcance, sesiones más profundas
-        y resultados más transformadores.
+    <div class="founder-content">
+      <div class="founder-accent-line"></div>
+      <p class="eyebrow">Founder</p>
+      <h2 class="founder-name">Cinthya <em>Garcia</em></h2>
+      <p class="founder-origin">Peruvian-born · Napa Valley, California</p>
+      <p class="founder-bio">
+        Cinthya Garcia is a wellness curator and founder of Kaia — a platform creating
+        elevated, transformative experiences across California and beyond.
       </p>
-      <p class="team-callout" data-i18n="team_callout">Es hora de ir más allá de lo local. Sin límites geográficos.</p>
-      <a href="#booking" class="btn btn-primary" data-i18n="team_cta">Empezar ahora</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PASOS / BOOKING FLOW
-═══════════════════════════════════════ -->
-<section class="steps-section">
-  <div class="steps-inner">
-    <div class="steps-left">
-      <p class="eyebrow" data-i18n="steps_eyebrow">Así de simple</p>
-      <h2><span data-i18n="steps_h2a">Agenda en</span><br><em data-i18n="steps_h2b">4 pasos simples</em></h2>
-      <p data-i18n="steps_p">Diseñamos el proceso para que llegues a tu sesión sin fricciones, solo con intención.</p>
-      <a href="#booking" class="btn btn-outline" data-i18n="steps_cta">Ver disponibilidad</a>
-    </div>
-    <div class="steps-right">
-      <div class="step">
-        <span class="step-num">01</span>
-        <div>
-          <h4 data-i18n="step1_title">Cuéntanos sobre ti</h4>
-          <p data-i18n="step1_p">Comparte tus objetivos de bienestar y lo que buscas sanar.</p>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">02</span>
-        <div>
-          <h4 data-i18n="step2_title">Elige tu tipo de sesión</h4>
-          <p data-i18n="step2_p">Individual, grupal, retiro o virtual — selecciona la que más resuena contigo.</p>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">03</span>
-        <div>
-          <h4 data-i18n="step3_title">Escoge fecha y hora</h4>
-          <p data-i18n="step3_p">Selecciona el horario que mejor se adapte a tu agenda.</p>
-        </div>
-      </div>
-      <div class="step">
-        <span class="step-num">04</span>
-        <div>
-          <h4 data-i18n="step4_title">Recibe tu confirmación</h4>
-          <p data-i18n="step4_p">Te enviamos la invitación de Google Calendar y todo lo que necesitas saber.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PERSONAS REALES
-═══════════════════════════════════════ -->
-<section class="people-section">
-  <div class="people-inner">
-    <div class="people-content">
-      <p class="eyebrow" data-i18n="people_eyebrow">Nuestro equipo</p>
-      <h2><span data-i18n="people_h2a">Nuestras facilitadoras son</span><br><em data-i18n="people_h2b">personas reales</em></h2>
-      <p data-i18n="people_p1">
-        Durante casi una década, hemos acompañado el crecimiento personal, el bienestar
-        y el desarrollo interior de cientos de personas a través del poder del sonido.
-        Nuestras facilitadoras son un grupo dinámico de seres humanos que abarcan
-        múltiples tradiciones, idiomas y formas de sanar.
+      <p class="founder-bio">
+        Based in Napa Valley, she blends her cultural roots, love for sensory rituals,
+        and eye for aesthetics to design spaces that invite <em>presence</em>,
+        <em>connection</em>, and <em>expansion</em>.
       </p>
-      <p data-i18n="people_p2">Y si te unes a nosotros, tampoco serás un número — <strong>serás parte de la familia.</strong></p>
-      <a href="#team" class="btn btn-outline" data-i18n="people_cta">Conoce al equipo</a>
-    </div>
-    <div class="people-photos">
-      <div class="photos-grid">
-        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=400&q=80" alt="Sesión" class="pg-img tall" onerror="this.src='https://i.pravatar.cc/400?img=20'" />
-        <img src="https://i.pravatar.cc/300?img=47" alt="Facilitadora" class="pg-img" />
-        <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=300&q=80" alt="Cuencos" class="pg-img" onerror="this.src='https://i.pravatar.cc/300?img=32'" />
-        <img src="https://i.pravatar.cc/300?img=44" alt="Facilitadora" class="pg-img tall" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     CRECER POR DENTRO
-═══════════════════════════════════════ -->
-<section class="grow-section">
-  <div class="grow-inner">
-    <div class="grow-img-wrap">
-      <img
-        src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=600&q=80"
-        alt="Meditación sonora"
-        class="grow-img"
-        onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'"
-      />
-    </div>
-    <div class="grow-content">
-      <p class="eyebrow" data-i18n="grow_eyebrow">Únete a la comunidad</p>
-      <h2><span data-i18n="grow_h2a">Una mejor manera de crecer…</span><br><em data-i18n="grow_h2b">por dentro</em></h2>
-      <p data-i18n="grow_p1">
-        Nuestra pasión por el crecimiento se alimenta de nuestra cultura. Celebramos
-        tu progreso, reconocemos tus avances y te damos la oportunidad de descubrir
-        las prácticas más poderosas del bienestar sonoro.
-      </p>
-      <p data-i18n="grow_p2">¿Quieres unirte a nuestra comunidad? Descubre nuestros talleres y formaciones.</p>
-      <a href="#booking" class="btn btn-outline" data-i18n="grow_cta">Ver formaciones abiertas</a>
+      <blockquote class="founder-quote">
+        <strong>Her work lives at the intersection of community, intention, and modern wellness —
+        redefining what it means to <em>pause</em> and truly feel.</strong>&#8221;
+      </blockquote>
     </div>
   </div>
 </section>

@@ -24,12 +24,8 @@
 
 /* ── NAVBAR SCROLL ─────────────────────────── */
 const navbar = document.getElementById('navbar');
-let lastScrollY = 0;
 window.addEventListener('scroll', () => {
-  const currentY = window.scrollY;
-  navbar.classList.toggle('scrolled', currentY > 50);
-  navbar.classList.toggle('navbar-hidden', currentY > lastScrollY && currentY > 100);
-  lastScrollY = currentY;
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
 /* ── HAMBURGER ─────────────────────────────── */
@@ -646,17 +642,26 @@ const modalOverlay = document.getElementById('modalOverlay');
 const modalBody    = document.getElementById('modalBody');
 const modalClose   = document.getElementById('modalClose');
 
+const NO_SCROLL_MODALS = ['brand-collab', 'community', 'kaia-tech-lab', 'team'];
+
 function openModal(key) {
   const source = document.getElementById('modal-' + key);
   if (!source) return;
   modalBody.innerHTML = source.innerHTML;
   modalOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';
+  const panel = document.getElementById('modalPanel');
+  if (NO_SCROLL_MODALS.includes(key)) {
+    panel.classList.add('modal-no-scroll');
+  } else {
+    panel.classList.remove('modal-no-scroll');
+  }
 }
 
 function closeModal() {
   modalOverlay.classList.remove('active');
   document.body.style.overflow = '';
+  document.getElementById('modalPanel').classList.remove('modal-no-scroll');
   setTimeout(() => { modalBody.innerHTML = ''; }, 300);
 }
 
