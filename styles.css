@@ -840,11 +840,7 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 }
 .about-modal-title em {
   font-style: italic;
-  background: linear-gradient(120deg, #6D28D9 0%, #BE185D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(190,24,93,0.45));
+  color: #7C3AED;
 }
 .about-modal-body {
   font-size: 1.1rem;
@@ -859,11 +855,7 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 .about-modal-body strong { color: #000000; font-weight: 700; }
 .about-modal-body em {
   font-style: italic;
-  background: linear-gradient(120deg, #5b21b6 0%, #9d174d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(157,23,77,0.6));
+  color: #7C3AED;
   font-weight: 700;
 }
 .sparkle {
@@ -897,11 +889,7 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 .about-modal-manifesto p + p { margin-top: 8px; }
 .about-modal-manifesto em {
   font-style: italic;
-  background: linear-gradient(120deg, #6D28D9 0%, #BE185D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 8px rgba(190,24,93,0.45));
+  color: #7C3AED;
 }
 .about-modal-manifesto strong { font-weight: 700; color: #1a1a1a; }
 
