@@ -621,7 +621,7 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
    BOOKING
 ══════════════════════════════════════════════════════════ */
 .booking-section {
-  padding: 120px 32px;
+  padding: 72px 32px;
   background: url('hero-bg.jpg') center center / cover no-repeat;
   background-attachment: fixed;
   position: relative;
@@ -645,11 +645,20 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 .booking-cta-head p { color: var(--text-muted); font-size: .92rem; }
 
 .booking-layout {
-  display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start;
+  display: flex; justify-content: center; align-items: start;
 }
 .booking-form-box {
-  background: var(--white); border-radius: var(--radius-lg);
-  padding: 48px; box-shadow: var(--shadow-md);
+  max-width: 780px; width: 100%;
+}
+.booking-form-box {
+  background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(168,85,247,0.12) 100%);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(255,255,255,0.82);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  box-shadow: 0 8px 32px rgba(109,40,217,0.12), inset 0 1px 0 rgba(255,255,255,0.65);
 }
 
 .bform { display: flex; flex-direction: column; gap: 18px; }
@@ -660,17 +669,17 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 .bform-group select,
 .bform-group textarea {
   width: 100%; padding: 12px 14px;
-  border: 1.5px solid var(--border); border-radius: var(--radius);
+  border: 1.5px solid rgba(255,255,255,0.45); border-radius: var(--radius);
   font-size: .9rem; font-family: 'Inter', sans-serif;
-  color: var(--text); background: var(--bg);
+  color: var(--text); background: rgba(255,255,255,0.22);
   transition: var(--t); outline: none; -webkit-appearance: none;
 }
 .bform-group input:focus,
 .bform-group select:focus,
 .bform-group textarea:focus {
-  border-color: var(--lila);
-  box-shadow: 0 0 0 3px rgba(168,85,247,.1);
-  background: var(--white);
+  border-color: rgba(168,85,247,0.6);
+  box-shadow: 0 0 0 3px rgba(168,85,247,0.12);
+  background: rgba(255,255,255,0.35);
 }
 .bform-group textarea { resize: vertical; }
 .bform-notice {
