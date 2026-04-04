@@ -1270,9 +1270,11 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
 }
 
 @media (max-width: 768px) {
-  .logo-kaia { font-size: 4.5rem; }
-  .logo-divider { height: 36px; }
-  .logo-wellness { font-size: 0.7rem; letter-spacing: 0.3em; }
+  /* Logo */
+  .logo-kaia { font-size: 4rem; }
+  .logo-divider { height: 32px; }
+  .logo-wellness { font-size: 0.65rem; letter-spacing: 0.28em; }
+  /* Navbar */
   .nav-top { padding: 12px 16px 8px; }
   .nav-bottom { padding: 8px 16px; }
   .nav-links { display: none; }
@@ -1284,9 +1286,17 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
   }
   .hamburger { display: flex; }
   .btn-nav { display: none; }
-  .hero { min-height: 100vh; padding: 180px 24px 60px; align-items: flex-start; }
-  .hero-services { flex-wrap: wrap; }
-  .hero-svc { min-width: calc(30% - 12px); }
+  /* Hero */
+  .hero { min-height: 100vh; padding: 150px 20px 52px; align-items: center; text-align: center; }
+  .hero-heading { text-align: center; }
+  /* Ecosystem label */
+  .hero-ecosystem-label { gap: 10px; margin-bottom: 24px; }
+  .hero-ecosystem-label::before,
+  .hero-ecosystem-label::after { flex: 0 0 56px; }
+  /* Service buttons: 3 en la primera fila, 2 centrados en la segunda */
+  .hero-services { flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0 4px; }
+  .hero-svc { flex: 0 0 calc(33% - 8px); min-width: 92px; max-width: 130px; }
+  /* Grids */
   .services-grid { grid-template-columns: 1fr; }
   .bform-row { grid-template-columns: 1fr; }
   .booking-form-box { padding: 24px; }
@@ -1296,11 +1306,38 @@ blockquote em { color: var(--lila-mid); font-style: normal; }
   .people-inner { grid-template-columns: 1fr; }
   .photos-grid { grid-template-columns: 1fr 1fr; }
   .pg-img.tall { aspect-ratio: 1; grid-row: span 1; }
+  /* Modal */
+  .modal-overlay { padding: 14px; }
+  .modal-panel { border-radius: 24px; max-height: 90vh; }
+  .about-modal-section { padding: 36px 22px 28px; }
+  .kt-experiences { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
-  .logo-kaia { font-size: 3.5rem; }
+  /* Logo */
+  .logo-kaia { font-size: 3.2rem; }
   .footer-inner { grid-template-columns: 1fr; }
-  .hero-services { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-  .hero-svc { flex-direction: column; min-width: 80px; }
+  /* Hero */
+  .hero { padding: 130px 16px 44px; }
+  /* Ecosystem label: líneas muy cortas */
+  .hero-ecosystem-label { gap: 8px; margin-bottom: 20px; }
+  .hero-ecosystem-label::before,
+  .hero-ecosystem-label::after { flex: 0 0 24px; }
+  /* Service buttons: 2 por fila */
+  .hero-services { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .hero-svc { flex-direction: column; flex: 0 0 calc(50% - 8px); min-width: 130px; max-width: 160px; padding: 14px 10px; }
+  /* Modal */
+  .modal-overlay { padding: 10px; }
+  .modal-panel { border-radius: 20px; max-height: 92vh; }
+  .about-modal-section { padding: 28px 16px 22px; }
+  .about-modal-title { font-size: 1.35rem; }
+  .about-modal-body { font-size: 0.97rem; }
+  .kt-experiences { grid-template-columns: 1fr 1fr; }
+  .ks-experiences { grid-template-columns: 1fr 1fr; }
+  /* Founder modal */
+  .founder-section { padding: 28px 18px; }
+  .founder-name { font-size: 2rem; }
+  .founder-quote { font-size: 0.93rem; padding-left: 20px; }
+  /* Modal close */
+  .modal-close { top: 10px; right: 10px; width: 32px; height: 32px; font-size: 0.8rem; }
 }
